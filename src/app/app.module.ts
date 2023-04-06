@@ -11,13 +11,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { environment } from 'src/environments/environment';
 import { HerodetailComponent } from './hero/herodetail/herodetail.component';
+import { MovieDetailComponent } from './movie/movie-detail/movie-detail.component';
+import { PaginationComponent } from './pagination/pagination/pagination.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     LayoutComponent,
-    HerodetailComponent
+    HerodetailComponent,
+    MovieDetailComponent
   ],
   imports: [
     BrowserModule,

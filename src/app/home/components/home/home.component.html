@@ -31,3 +31,34 @@
     </div>
   </div>
 </div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <h1 class="text-center">Popular Movies</h1>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div *ngIf="loading" class="text-center">
+        <i class="fa fa-spinner fa-spin fa-2x"></i>
+      </div>
+      <div *ngIf="!loading" class="row">
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-3" *ngFor="let movie of movies">
+          <div class="card" style="width: 100%;" (click)="goToDetail(movie)">
+            <img class="card-img-top" src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" alt="{{movie.title}} poster">
+            <div class="card-body">
+              <h5 class="card-title">{{movie.title}}</h5>
+              <p class="card-text">{{movie.overview | slice:0:100}}...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-3">
+        <div class="col-auto">
+          <app-pagination [totalResults]="totalResults" [totalPages]="totalPages" [currentPage]="currentPage" (pageChange)="onPageChange($event)"></app-pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
