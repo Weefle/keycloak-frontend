@@ -14,7 +14,7 @@ import { MovieService } from '@core/services/movie.service';
 export class HomeComponent implements OnInit {
   username: string = "";
   heroes: Heroe[]= [];
-  searchString = "";
+  searchQuery = "";
   movies: Movie[] = [];
   currentPage: number = 1;
   totalResults: number = 0;
@@ -51,6 +51,15 @@ export class HomeComponent implements OnInit {
     this.username = this.keycloakService.getUsername(); // Before KeycloakService configure()
     console.log("HomeComponent ngOnInit");
   }
+
+  searchMovies() {
+    if (this.searchQuery) {
+      this.movieService.searchMovies(this.searchQuery).subscribe((movies) => {
+        this.movies = movies;
+      });
+    }
+  }
+  
 
   goToDetail(movie: Movie) {
     this.router.navigate(['/home/movies', movie.id]);

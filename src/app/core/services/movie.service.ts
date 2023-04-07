@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import {Genre, Movie, MoviesResponse} from '@core/models/movie';
 
 @Injectable({
@@ -21,6 +21,15 @@ export class MovieService {
     const url = `${this.apiUrl}/movie/${id}?api_key=${this.apiKey}`;
     return this.http.get(url);
   }
+
+  searchMovies(query: string): Observable<Movie[]> {
+    const url = `${this.apiUrl}/search/movie?api_key=${this.apiKey}&query=${query}`;
+  
+    return this.http.get<any>(url).pipe(
+      map(response => response.results as Movie[])
+    );
+  }
+  
 
 
 }
