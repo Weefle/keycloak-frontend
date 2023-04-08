@@ -52,11 +52,29 @@ export class HomeComponent implements OnInit {
     console.log("HomeComponent ngOnInit");
   }
 
-  searchMovies() {
+  /*searchMovies() {
     if (this.searchQuery) {
       this.movieService.searchMovies(this.searchQuery).subscribe((movies) => {
         this.movies = movies;
       });
+    }
+  }*/
+
+  searchMovies() {
+    if (this.searchQuery) {
+      this.loading = true;
+    this.movieService.searchMovies(this.searchQuery).subscribe(
+      (response: MoviesResponse) => {
+        this.movies = response.results;
+        this.totalResults = response.total_results;
+        this.totalPages = response.total_pages;
+        this.loading = false;
+      },
+      error => {
+        console.log(error);
+        this.loading = false;
+      }
+    );
     }
   }
   

@@ -22,12 +22,12 @@ export class MovieService {
     return this.http.get(url);
   }
 
-  searchMovies(query: string): Observable<Movie[]> {
+  searchMovies(query: string): Observable<MoviesResponse> {
     const url = `${this.apiUrl}/search/movie?api_key=${this.apiKey}&query=${query}`;
-  
-    return this.http.get<any>(url).pipe(
+    return this.http.get<MoviesResponse>(url);
+    /*return this.http.get<any>(url).pipe(
       map(response => response.results as Movie[])
-    );
+    );*/
   }
   
 
