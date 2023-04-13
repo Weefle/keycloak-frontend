@@ -1,14 +1,17 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import {Genre, Movie, MoviesResponse} from '@core/models/movie';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
-  private apiKey = '98df78b64e2ffa02ca344247d3361cf4';
-  private readonly apiUrl = 'https://api.themoviedb.org/3';
+  private apiKey = environment.api_key;
+  private readonly apiUrl = environment.tmdb_api;
+  movieUrl = environment.movie_api;
+  httpOptions = { headers: new HttpHeaders({'Content-Type' : 'application/json'})};
 
   constructor(private http: HttpClient) {}
 
@@ -29,7 +32,13 @@ export class MovieService {
       map(response => response.results as Movie[])
     );*/
   }
-  
 
+  public createMovie(movie: Movie): Observable<any> {
+    return this.http.post<any>(this.movieUrl + 'create', movie, this.httpOptions);
+  }
+
+  public getMovieFavorite(): Observable<any> {
+    return this.http.get<any>(this.movieUrl + 'list', this.httpOptions);
+  }
 
 }
