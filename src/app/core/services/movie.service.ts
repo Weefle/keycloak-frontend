@@ -37,8 +37,8 @@ export class MovieService {
     return this.http.post<any>(this.movieUrl + 'create', movie, this.httpOptions);
   }
 
-  public getMovieList(): Observable<Array<Movie>> {
-    return this.http.get<Array<Movie>>(this.movieUrl + 'list', this.httpOptions);
+  public getMovieFavorite(): Observable<any> {
+    return this.http.get<any>(this.movieUrl + 'list', this.httpOptions);
   }
 
 }

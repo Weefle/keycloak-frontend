@@ -22,7 +22,7 @@ const routes: Routes = [
     data: { requiredRoles: ['admin', 'user'] }
   },
   {
-    path: 'movies/list', component: MovieListComponent,
+    path: 'list', component: MovieListComponent,
     canActivate: [FooGuard],
     data: { requiredRoles: ['admin', 'user'] }
   }
