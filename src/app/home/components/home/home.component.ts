@@ -23,9 +23,9 @@ export class HomeComponent implements OnInit {
 
   /**
    * Inject services.
-   * 
+   *
    * Important: `LoginService` depends on `KeycloakService`.
-   * 
+   *
    * @param keycloakService is the service that takes care of setting up OAuth with Keycloack.
    * @param loginService is the service that handles the basic information of the authentication system.
    */
@@ -77,11 +77,7 @@ export class HomeComponent implements OnInit {
     );
     }
   }
-  
 
-  goToDetail(movie: Movie) {
-    this.router.navigate(['/home/movies', movie.id]);
-  }
 
   getMovies(page: number): void {
     this.loading = true;

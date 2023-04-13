@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FooGuard } from '@core/guards/foo.guard';
 import { HerodetailComponent } from '@app/hero/herodetail/herodetail.component';
 import { MovieDetailComponent } from '@app/movie/movie-detail/movie-detail.component';
+import { MovieListComponent } from '@app/movie/movie-list/movie-list/movie-list.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,11 @@ const routes: Routes = [
   },
   {
     path: 'movies/:id', component: MovieDetailComponent,
+    canActivate: [FooGuard],
+    data: { requiredRoles: ['admin', 'user'] }
+  },
+  {
+    path: 'movies/list', component: MovieListComponent,
     canActivate: [FooGuard],
     data: { requiredRoles: ['admin', 'user'] }
   }

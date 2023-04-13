@@ -12,26 +12,32 @@ import { OAuthModule } from 'angular-oauth2-oidc';
 import { environment } from 'src/environments/environment';
 import { HerodetailComponent } from './hero/herodetail/herodetail.component';
 import { MovieDetailComponent } from './movie/movie-detail/movie-detail.component';
-import { PaginationComponent } from './pagination/pagination/pagination.component';
+import { MovieListComponent } from './movie/movie-list/movie-list/movie-list.component';
+import { MovieComponent } from './movie/movie/movie.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MenuComponent,
-    LayoutComponent,
-    HerodetailComponent,
-    MovieDetailComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    CoreModule,
-    HttpClientModule,
-    OAuthModule.forRoot({
-      resourceServer: environment.authResourceServerConfig
-    })
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        MenuComponent,
+        LayoutComponent,
+        HerodetailComponent,
+        MovieDetailComponent,
+        MovieListComponent,
+        MovieComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        CoreModule,
+        HttpClientModule,
+        OAuthModule.forRoot({
+            resourceServer: environment.authResourceServerConfig
+        })
+    ],
+    providers: [],
+    exports: [
+        MovieComponent
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
