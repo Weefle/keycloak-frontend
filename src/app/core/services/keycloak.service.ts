@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AuthConfig, NullValidationHandler, OAuthService, OAuthSuccessEvent } from 'angular-oauth2-oidc';
+import { AuthConfig, NullValidationHandler, OAuthService } from 'angular-oauth2-oidc';
 import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -29,11 +29,11 @@ export class KeycloakService {
 
   /**
    * Checks whether there are tokens in the hash fragment.
-   * 
+   *
    * Why was `Observable` chosen for this method? Often `Observable`
    * is preferred over `Promise` because it provides the features of
    * `Promise` and more.
-   * 
+   *
    * @returns {Observable} An `Observable` with result `true` if there are tokens.
    */
   afterTryLogin(): Observable<boolean> {

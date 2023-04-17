@@ -14,7 +14,7 @@ export class MovieDetailComponent implements OnInit {
   productionCountries?: string[];
   spokenLanguages?: string[];
 
-  constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router) {
+  constructor(private movieService: MovieService, private route: ActivatedRoute) {
 
   }
 

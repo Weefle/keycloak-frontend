@@ -54,7 +54,7 @@
       </div>
       <div *ngIf="!loading" class="row">
         <div class="col-sm-6 col-md-4 col-lg-3 mb-3" *ngFor="let movie of movies">
-          <app-movie [movie]="movie"></app-movie>
+          <app-movie [movie]="movie" [isFavoriteList]="true"></app-movie>
         </div>
       </div>
       <div class="row justify-content-center mt-3">

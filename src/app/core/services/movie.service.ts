@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import {Genre, Movie, MoviesResponse} from '@core/models/movie';
 import { environment } from 'src/environments/environment';
+import {MovieImages} from "@core/models/image";
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,10 @@ export class MovieService {
 
   public createMovie(movie: Movie): Observable<any> {
     return this.http.post<any>(this.movieUrl + 'create', movie, this.httpOptions);
+  }
+
+  public removeMovie(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.movieUrl}delete/${id}`);
   }
 
   public getMovieFavorite(): Observable<any> {

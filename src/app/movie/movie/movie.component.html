@@ -1,8 +1,13 @@
-<div class="card" style="width: 100%;" (click)="goToDetail(movie!)">
-  <img class="card-img-top" src="https://image.tmdb.org/t/p/w500{{movie?.poster_path}}" alt="{{movie?.title}} poster">
+<div class="card" style="width: 100%;">
+    <img class="card-img-top" src="https://image.tmdb.org/t/p/w500{{movie?.poster_path}}" alt="{{movie?.title}} poster" (click)="goToDetail(movie!)">
   <div class="card-body">
     <h5 class="card-title">{{movie?.title}}</h5>
     <p class="card-text">{{movie?.overview | slice:0:100}}...</p>
-    <button class="btn btn-outline-danger" (click)="addMovieToFavorites(movie!)"> <i class="fa fa-heart"></i> Ajouter aux favoris </button>
+    <div *ngIf="isFavoriteList; else elseBlock">
+      <button class="btn btn-outline-danger" (click)="addMovieToFavorites(movie!)"> <i class="fa fa-heart"></i> Ajouter aux favoris </button>
+    </div>
+    <ng-template #elseBlock>
+      <button class="btn btn-outline-info" (click)="removeMovieFromFavorites(movie!.id)"> <i class="fa fa-trash"></i> Retirer des favoris </button>
+    </ng-template>
   </div>
 </div>

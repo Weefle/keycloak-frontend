@@ -10,7 +10,9 @@ export const environment = {
     allowedUrls: [
       'http://45.147.96.160:8081/api/test',
       'http://45.147.96.160:8080/api/test',
-      'http://45.147.96.160:8080/foo'
+      'http://45.147.96.160:8080/foo',
+      'http://45.147.96.160:8080/movies',
+      'http://45.147.96.160:8080/user'
     ],
     sendAccessToken: true
   },
