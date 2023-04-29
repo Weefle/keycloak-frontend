@@ -1,6 +1,5 @@
 export const environment = {
   production: true,
-  foo_api: 'http://45.147.96.160:8080/foo/',
   user_api: 'http://45.147.96.160:8080/user/',
   movie_api: 'http://45.147.96.160:8080/movies/',
   api_key: '98df78b64e2ffa02ca344247d3361cf4',
@@ -8,9 +7,6 @@ export const environment = {
   heroe_api: 'https://superhero-search.p.rapidapi.com/api/',
   authResourceServerConfig: {
     allowedUrls: [
-      'http://45.147.96.160:8081/api/test',
-      'http://45.147.96.160:8080/api/test',
-      'http://45.147.96.160:8080/foo',
       'http://45.147.96.160:8080/movies',
       'http://45.147.96.160:8080/user'
     ],

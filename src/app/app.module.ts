@@ -10,8 +10,6 @@ import { CoreModule } from '@core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { environment } from 'src/environments/environment';
-import { HerodetailComponent } from './hero/herodetail/herodetail.component';
-import { MovieDetailComponent } from './movie/movie-detail/movie-detail.component';
 
 @NgModule({
     declarations: [

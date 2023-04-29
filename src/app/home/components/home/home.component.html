@@ -2,51 +2,22 @@
     <div class="jumbotron">
         <h1 *ngIf="!username" class="display-4">You have not logged in</h1>
         <h1 *ngIf="username" class="display-4">Hi {{username}}</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        <p class="lead">This is a simple website where you can search for movies, see the latest popular movies and also like them to save them to your list.
+        You can still remove them after if you want to.</p>
       </div>
-      <!--<div>
-        <form>
-            <div>
-                <input [(ngModel)]="searchString" type="text" name="hero" id="author" placeholder="Rechercher un héro...">
-            </div>
-            <div>
-                <button type="submit" (click)="getHeroes(searchString)">Rechercher</button>
-            </div>
-        </form>
-      </div>-->
 </div>
 <hr>
 <div class="container">
-  <div class="row">
-    <div class="col-md-4" *ngFor="let heroe of heroes">
-      <div routerLink="/home/detail/{{heroe.name}}" class="card rounded">
-        <img src="{{heroe.images.lg}}" alt="{{heroe.name}}" class="card-img-top img-fluid rounded">
-        <div class="card-body">
-          <h5 class="card-title">{{heroe.name}}</h5>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-12">
-      <h1 class="text-center">Popular Movies</h1>
-    </div>
-  </div>
-  <h1>Recherche de films</h1>
+  <h1>Movie search</h1>
 
 <div class="form-group">
-  <input type="text" class="form-control" placeholder="Rechercher un film..." [(ngModel)]="searchQuery">
+  <input type="text" class="form-control" placeholder="Search a movie" [(ngModel)]="searchQuery">
 </div>
 
-<button class="btn btn-primary" (click)="searchMovies()">Rechercher</button>
+<button class="btn btn-primary" (click)="searchMovies()">Search</button>
 
 
-  <h2>Résultats de recherche</h2>
+  <h2>Search results</h2>
   <div class="row justify-content-center">
     <div class="col-12">
       <div *ngIf="loading" class="text-center">

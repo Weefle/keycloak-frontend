@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Heroe } from '@core/models/heroe';
 import { Movie, MoviesResponse } from '@core/models/movie';
-import { HeroeService } from '@core/services/heroe.service';
 import { KeycloakService } from '@core/services/keycloak.service';
 import { MovieService } from '@core/services/movie.service';
 
@@ -13,7 +11,6 @@ import { MovieService } from '@core/services/movie.service';
 })
 export class HomeComponent implements OnInit {
   username: string = "";
-  heroes: Heroe[]= [];
   searchQuery = "";
   movies: Movie[] = [];
   currentPage: number = 1;
@@ -29,20 +26,8 @@ export class HomeComponent implements OnInit {
    * @param keycloakService is the service that takes care of setting up OAuth with Keycloack.
    * @param loginService is the service that handles the basic information of the authentication system.
    */
-  constructor(private keycloakService: KeycloakService, private heroeService: HeroeService, private router: Router, private movieService: MovieService) { }
+  constructor(private keycloakService: KeycloakService, private router: Router, private movieService: MovieService) { }
 
-  getHeroes(hero?: string) {
-    if(hero != null && hero?.length>0){
-      this.heroeService.getHeroe(hero).subscribe(data => {
-        this.router.navigate(['/home/detail', hero]);
-      });
-    }else{
-      this.heroeService.getHeroes().subscribe(data => {
-        this.heroes = data;
-      });
-    }
-
-  }
 
   ngOnInit(): void {
     this.getMovies(this.currentPage);
@@ -51,14 +36,6 @@ export class HomeComponent implements OnInit {
     this.username = this.keycloakService.getUsername(); // Before KeycloakService configure()
     console.log("HomeComponent ngOnInit");
   }
-
-  /*searchMovies() {
-    if (this.searchQuery) {
-      this.movieService.searchMovies(this.searchQuery).subscribe((movies) => {
-        this.movies = movies;
-      });
-    }
-  }*/
 
   searchMovies() {
     if (this.searchQuery) {
