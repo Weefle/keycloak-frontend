@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { FooGuard } from '@core/guards/foo.guard';
-import { HerodetailComponent } from '@app/hero/herodetail/herodetail.component';
+import { AppGuard } from '@core/guards/app.guard';
 import { MovieDetailComponent } from '@app/movie/movie-detail/movie-detail.component';
-import { MovieListComponent } from '@app/movie/movie-list/movie-list/movie-list.component';
+import { MovieListComponent } from '@app/movie/movie-list/movie-list.component';
 
 const routes: Routes = [
   {
@@ -12,18 +11,13 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'detail/:name', component: HerodetailComponent,
-    canActivate: [FooGuard],
-    data: { requiredRoles: ['admin', 'user'] }
-  },
-  {
     path: 'movies/:id', component: MovieDetailComponent,
-    canActivate: [FooGuard],
+    canActivate: [AppGuard],
     data: { requiredRoles: ['admin', 'user'] }
   },
   {
     path: 'list', component: MovieListComponent,
-    canActivate: [FooGuard],
+    canActivate: [AppGuard],
     data: { requiredRoles: ['admin', 'user'] }
   }
 ];

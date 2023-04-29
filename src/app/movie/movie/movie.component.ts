@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Movie} from "@core/models/movie";
 import {Router} from "@angular/router";
 import {MovieService} from "@core/services/movie.service";
@@ -15,6 +15,12 @@ export class MovieComponent implements OnInit {
   @Input()
   movie?: Movie;
 
+  @Input()
+  isFavoriteList?: boolean;
+
+  @Output()
+  movieDeleted = new EventEmitter();
+
   ngOnInit(): void {
 
   }
@@ -23,6 +29,26 @@ export class MovieComponent implements OnInit {
     this.movieService.createMovie(movie).subscribe(
       {
         next: (data) => {
+          console.log(data);
+        },
+        error: (e) => console.error(e),
+        complete: () => console.info('complete')
+      }
+    );
+  }
+
+  removeMovieFromFavorites(id: number) {
+    this.movieService.removeMovie(id).subscribe(
+      {
+        next: (data) => {
+          this.movieService.getMovie(id).subscribe({
+            next: (data) => {
+              this.movieDeleted.emit();
+              console.log(data);
+            },
+            error: (e) => console.error(e),
+            complete: () => console.info('emitted')
+          });
           console.log(data);
         },
         error: (e) => console.error(e),

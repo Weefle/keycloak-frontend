@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
-import {Genre, Movie, MoviesResponse} from '@core/models/movie';
+import { Observable } from 'rxjs';
+import {Movie, MoviesResponse} from '@core/models/movie';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -35,6 +35,10 @@ export class MovieService {
 
   public createMovie(movie: Movie): Observable<any> {
     return this.http.post<any>(this.movieUrl + 'create', movie, this.httpOptions);
+  }
+
+  public removeMovie(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.movieUrl}delete/${id}`);
   }
 
   public getMovieFavorite(): Observable<any> {
